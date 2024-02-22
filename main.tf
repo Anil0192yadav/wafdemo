@@ -4,7 +4,7 @@
 resource "aws_wafv2_ip_set" "custom_ip_set" {
   name = "${var.name_prefix}-custom-ip-set"
 
-  scope              = "REGIONAL"
+  scope              = "ap-south-1"
   ip_address_version = "IPV4"
 
   addresses = [
@@ -16,7 +16,7 @@ resource "aws_wafv2_ip_set" "custom_ip_set" {
 resource "aws_wafv2_regex_pattern_set" "bad_bots_user_agent" {
   name        = "BadBotsUserAgent"
   description = "Some bots regex pattern set example"
-  scope       = "REGIONAL"
+  scope       = "ap-south-1"
 
   regular_expression {
     regex_string = "semrushbot|censysinspect"
@@ -42,7 +42,7 @@ module "waf" {
 
   allow_default_action = true
 
-  scope = "REGIONAL"
+  scope = "ap-south-1"
 
   create_alb_association = false
 
